@@ -1,7 +1,7 @@
 import './App.css';
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { addUser } from './feature/Users';
+import { addUser, deleteUser} from './feature/Users';
 
 function App() {
   const userList = useSelector((state)=> state.users.value);
@@ -25,6 +25,11 @@ function App() {
           return <div>
             <h1>{user.name}</h1>
             <h1>{user.username}</h1>
+            <input type='text' placeholder='New username...' onChange={(event)=> {
+          // setName(event.target.value)
+          }}/>
+          <button>Update username</button>
+          <button onClick={()=> {dispatch(deleteUser({id: user.id}))}}>Delete user</button>
             </div>
         })}
       </div>
